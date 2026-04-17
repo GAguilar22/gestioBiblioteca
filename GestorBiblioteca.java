@@ -45,6 +45,7 @@ public class GestorBiblioteca {
     public void prestarLlibre(Usuari usuari, Llibre llibre) {
         if (inventari.contains(llibre) && !llibre.esPrestat()) {
             llibre.prestar();
+            
             Prestec prestec = new Prestec(usuari, llibre, LocalDate.now());
             prestecs.add(prestec);
             usuari.afegirLlibre(llibre);
