@@ -37,4 +37,26 @@ public class GestorBiblioteca {
             return false;
         }
     }
+
+    public void retornarLlibre(Usuari usuari, Llibre llibre) {
+        if (llibre.esPrestat()) {
+            llibre.retornar();
+            usuari.retornarLlibre(llibre);
+            
+            Prestec prestecACancelar = null;
+            for (Prestec p : prestecs) {
+                if (p.getLlibre().equals(llibre) && p.getUsuari().equals(usuari)) {
+                    prestecACancelar = p;
+                    break;
+                }
+            }
+            if (prestecACancelar != null) {
+                prestecs.remove(prestecACancelar);
+            }
+            
+            System.out.println(usuari.getNom() + " ha retornat el llibre: " + llibre.getTitol());
+        } else {
+            System.out.println("Aquest llibre no estava prestat.");
+        }
+    }
 }
