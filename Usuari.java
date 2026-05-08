@@ -15,6 +15,10 @@ public class Usuari {
         return nom;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public List<Llibre> getLlibresPrestats() {
         return llibresPrestats;
     }
